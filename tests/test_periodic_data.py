@@ -2,7 +2,7 @@ import sys
 import os
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(parent_dir)
-from periodic_data import get_atomic_number, get_relative_molecular_mass
+from general_chemistry.periodic_data import get_atomic_number, get_relative_molecular_mass
 from utils.diff import diff
 def test_get_atomic_number():
     # Test valid element name in different capitalizations

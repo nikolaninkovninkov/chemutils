@@ -5,7 +5,7 @@ import sys
 import os
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(parent_dir)
-from periodic_data import get_atomic_number
+from general_chemistry.periodic_data import get_atomic_number
 def _get_charge(compound: str):
     plus_count = compound.count('+')
     minus_count = compound.count('-')

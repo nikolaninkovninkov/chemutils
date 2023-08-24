@@ -2,7 +2,7 @@ import sys
 import os
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(parent_dir)
-from utils.balance_equation import balance_equation
+from general_chemistry.balance_equation import balance_equation
 from utils.create_dict_from_lists import create_dict_from_lists
 
 

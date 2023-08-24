@@ -6,9 +6,9 @@ sys.path.append(parent_dir)
 from utils.parsing import formula_to_composition
 from utils.create_dict_from_lists import create_dict_from_lists
 from sympy import Matrix, lcm
-def cool_print(x):
-    [print(_) for _ in x]
 def balance_equation(reac: Set[str], prod: Set[str]):
+    if set(reac) & set(prod):
+        raise ValueError("Duplicates in reactants and products")
     reaclist = list(reac)
     prodlist = list(prod)
     reac_compositions = [formula_to_composition(_) for _ in reaclist]
@@ -31,5 +31,6 @@ def balance_equation(reac: Set[str], prod: Set[str]):
     coeff=[_[0] for _ in solution.tolist()]
     reac_coeff = create_dict_from_lists(reaclist, coeff[0:len(reaclist)])
     prod_coeff = create_dict_from_lists([*prodlist], coeff[len(reaclist):])
+    reac_coeff = {k: v for k, v in reac_coeff.items() if v != 0}
+    prod_coeff = {k: v for k, v in prod_coeff.items() if v != 0}
     return reac_coeff, prod_coeff
-print(balance_equation("BrO3- H+ e-".split(' '), "HBrO H2O".split(' ')))
