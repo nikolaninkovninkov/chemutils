@@ -1,8 +1,10 @@
 from typing import Set
 import sys
 import os
+
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(parent_dir)
+from utils.solve_chemical_matrix import solve_matrix
 from utils.parsing import formula_to_composition
 from utils.create_dict_from_lists import create_dict_from_lists
 from sympy import Matrix, lcm
@@ -24,11 +26,10 @@ def balance_equation(reac: Set[str], prod: Set[str]):
     for prod_composition in prod_compositions:
         vertical_matrix_lines.append([-prod_composition.get(_, 0) for _ in sorted_unique_elements])
     matrix = [list(_) for _ in list(zip(*vertical_matrix_lines))]
-    matrix_instance = Matrix(matrix)
-    solution=matrix_instance.nullspace()[0]
-    multiple = lcm([val.q for val in solution])
-    solution = multiple*solution
-    coeff=[_[0] for _ in solution.tolist()]
+    # print(matrix)
+    # for row in matrix:
+    #     print(' '.join([str(_) for _ in row]))
+    coeff = solve_matrix(matrix)
     reac_coeff = create_dict_from_lists(reaclist, coeff[0:len(reaclist)])
     prod_coeff = create_dict_from_lists([*prodlist], coeff[len(reaclist):])
     reac_coeff = {k: v for k, v in reac_coeff.items() if v != 0}

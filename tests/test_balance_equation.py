@@ -18,3 +18,5 @@ def test_balance_equation():
     test('CuS HNO3', 'Cu(NO3)2 S NO H2O', '3 8 3 3 2 4')
     test('NH4OH KAl(SO4)2(H2O)12', 'Al(OH)3 (NH4)2SO4 KOH H2O', '4 1 1 2 1 12')
     test('KNO3 C12H22O11', 'N2 CO2 H2O K2CO3', '48 5 24 36 55 24')
+    test('O3 H2O e-', 'O2 OH-', '1 1 2 1 2')
+    test('C O2', 'CO CO2', '3 2 2 1')
