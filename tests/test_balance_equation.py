@@ -1,10 +1,10 @@
 import sys
 import os
+import pytest
 parent_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.append(parent_dir)
 from general_chemistry.balance_equation import balance_equation
 from utils.create_dict_from_lists import create_dict_from_lists
-
 
 def test_balance_equation():
     def test(reac_str, prod_str, coeff):
@@ -20,3 +20,4 @@ def test_balance_equation():
     test('KNO3 C12H22O11', 'N2 CO2 H2O K2CO3', '48 5 24 36 55 24')
     test('O3 H2O e-', 'O2 OH-', '1 1 2 1 2')
     test('C O2', 'CO CO2', '3 2 2 1')
+        
